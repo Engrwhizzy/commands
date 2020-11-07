@@ -1,0 +1,68 @@
+kubectl config view --minify
+
+aws eks --region us-west-2 update-kubeconfig --name mopac-dev-eks-cluster
+
+kubectl config set-context --current --namespace=mopac-dev
+
+kubectl port-forward pod-name 9090:9090
+
+kubectl exec -it <pod name> -c mopacwebapp bash
+
+kubectl config get-contexts
+
+kubectl exec -it <pod name> -c mopacwebapp bash
+
+yum install bind-utils   (nslookup install)
+
+helm install -f config/config-dev.yaml test .
+
+helm rollback mopacwebapp 13
+
+helm upgrade -f values.yaml mopac . -n monitoring
+
+UserID: j_jose
+
+kubectl -n monitoring get secret alertmanager-mopac-prometheus-operator-alertmanager -ojson | jq -r '.data["alertmanager.yaml"]' | base64 -D
+
+kubectl create secret generic alertmanager-main --from-file=alertmanager.yaml -n monitoring—————————————————————————————————————
+
+
+kubectl exec -it mopacwebapp-c7c86b798-xt2x9 bash
+bash-4.1# cd /root/
+bash-4.1# ls -l
+total 0
+drwxrwxrwx 2 root root 263 Sep 9 04:04 logs
+drwxrwxrwt 4 root root 280 Sep 8 22:43 security
+bash-4.1# cd logs/
+bash-4.1# pwd
+/root/logs
+0 Sep 8 22:43 mopac-web-termination-log
+bash-4.1# tail -1000 atlc.log
+—————————————————————————————————————
+
+((((((If we get any resource with Terminating status then we can follow below steps
+
+monitoring        Terminating   7h8m
+
+kubectl get namespace annoying-namespace-to-delete -o json > tmp.json
+then edit tmp.json and remove"kubernetes"
+Open another terminal and Run kubectl proxy
+curl -k -H "Content-Type: application/json" -X PUT --data-binary @tmp.json https://localhost:8001/api/v1/namespaces/<NAMESPACE NAME TO DELETE>/finalize
+
+and it should delete your namespace.)))))))
+—————————————————————————————————————
+
+
+(((((((((Then run the command "session-manager-plugin"
+
+Then run aws ssm start-session --target i-060d143d40a3242a0
+
+i-060d143d40a3242a0- This is the instance ID)))))))))))))
+—————————————————————————————————————
+
+Dig
+nc -vz 17.4.89.44 443
+Curl -Ivk https
+tcpdump
+
+openssl req -new -newkey rsa:2048 -sha256 -keyout mopacwebapp-qa.key.pem -subj "/CN=mopacwebapp-qa.apple.com"
